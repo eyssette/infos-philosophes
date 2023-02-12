@@ -315,7 +315,7 @@
 											<a href={cell}>Lien</a>
 										{:else if i == 6}
 											<!-- Extrait de la page wikipédia -->
-											{#if textToSearch !== ""}
+											{#if textToSearch !== "" && textToSearch !== " + "}
 												<details open>{@html cell}</details>
 											{:else}
 												<details>{@html cell}</details>

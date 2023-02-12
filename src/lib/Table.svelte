@@ -191,7 +191,11 @@
 					});
 					rows = rowsFilteredAndSorted;
 				} else {
-					rows = rowsFiltered;
+					rowsFilteredAndSorted = rowsFiltered.sort((a, b) => {
+						// Afficher en premier les résultats dont la première colonne (nom du philosophe) contient le terme recherché
+						return b[0].toLowerCase().includes(search_items[0]) - a[0].toLowerCase().includes(search_items[0]);
+					});
+					rows = rowsFilteredAndSorted
 				}
 				/* rows = rowsFilteredAndSorted.map(function (val) {
 					return val.slice(0, -1);

@@ -42,16 +42,17 @@
 	if (innerWidth > 800 && automaticSearch == true) {
 		textToSearch = textToSearchDefault;
 	}
-	if (dataNoHeader == false) {
-		headers = dataArray.shift();
-		if (changeHeader) {
+	if (innerWidth <= 800) {
+			headers = newHeaderIfSmallScreen;
+	} else {
+		if (dataNoHeader == false) {
+			headers = dataArray.shift();
+			if (changeHeader) {
+				headers = newHeader;
+			}
+		} else {
 			headers = newHeader;
 		}
-	} else {
-		headers = newHeader;
-	}
-	if (innerWidth <=800) {
-		headers = newHeaderIfSmallScreen;
 	}
 	let headersLength = headers.length;
 	let rows = dataArray;

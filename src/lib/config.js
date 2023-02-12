@@ -37,7 +37,7 @@ export function reorganizeDataFunction(arrInit) {
 /* Pour changer le titre des colonnes  */
 export const dataNoHeader = false;
 export const changeHeader = false;
-export const newHeader = [];
+export const newHeader = ["Philosophe","Naissance","Mort","Catégorie","Image","Page Wikipedia","Extrait Wikipédia"];
 export const newHeaderIfSmallScreen = ["Philosophe","Catégorie","Image"];
 /* export const newHeader=['Auteur·e','Texte']; */
 /* export const newHeader = ['Intitulé du sujet']; */

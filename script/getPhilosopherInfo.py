@@ -12,11 +12,11 @@ def get_philosopher_info(philosopher_name):
         json_list = list(json_data['query'].values())[0]
         json_list2 = list(json_list.values())[0]
         if 'thumbnail' in json_list2:
-            img_link = '<img src="'+re.sub("/50px.*", '', json_list2['thumbnail']['source'].replace('/thumb', ''))+'" />'
+            img_link = re.sub("/50px.*", '', json_list2['thumbnail']['source'].replace('/thumb', ''))
         else:
             img_link = ''
-        url = '<a href="'+json_list2['fullurl']+'">Page wikipedia</a>'
-        extract = re.sub('<!--.*?-->', '', json_list2['extract'].replace("\n", " "))
+        url = json_list2['fullurl']
+        extract = re.sub(' class=".*?"','',re.sub('\s\s+',' ',re.sub('<!--.*?-->', '', json_list2['extract'].replace("\n", " ").replace("\t", " ").replace("<dfn>", "").replace("</dfn>", ""))))
         return img_link, url, extract
     except:
         return '', '', ''
@@ -28,6 +28,6 @@ cr = csv.reader(lines)
 next(cr)
 
 for row in cr:
-    philosopher_name, birth, death, philosophy, curriculum = row
+    philosopher_name, birth, death, category, curriculum = row
     img_link, url, extract = get_philosopher_info(philosopher_name)
-    print(f'{philosopher_name}\t{birth}\t{death}\t{philosophy}\t{img_link}\t{url}\t{extract}')
+    print(f'{philosopher_name}\t{birth}\t{death}\t{category}\t{img_link}\t{url}\t{extract}')

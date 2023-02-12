@@ -44,6 +44,7 @@
 	}
 	if (innerWidth <= 800) {
 		headers = newHeaderIfSmallScreen;
+		dataArray.shift();
 	} else {
 		if (dataNoHeader == false) {
 			headers = dataArray.shift();

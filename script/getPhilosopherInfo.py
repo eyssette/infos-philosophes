@@ -21,13 +21,23 @@ def get_philosopher_info(philosopher_name):
     except:
         return '', '', ''
 
-url = 'https://raw.githubusercontent.com/eyssette/frise-philo/main/data/philosophers-1.csv'
+file_id = "1"
+
+url = 'https://raw.githubusercontent.com/eyssette/frise-philo/main/data/philosophers-'+file_id+'.csv'
 response = urllib.request.urlopen(url)
 lines = [l.decode('utf-8') for l in response.readlines()]
 cr = csv.reader(lines)
 next(cr)
 
-for row in cr:
-    philosopher_name, birth, death, category, curriculum = row
-    img_link, url, extract = get_philosopher_info(philosopher_name)
-    print(f'{philosopher_name}\t{birth}\t{death}\t{category}\t{img_link}\t{url}\t{extract}')
+with open("philosophes-"+file_id+".tsv", "w", newline="") as f:
+    writer = csv.writer(f, delimiter='\t')
+
+    writer.writerow(["Philosophe", "Naissance", "Mort", "Catégorie", "Image", "Page Wikipedia", "Extrait Wikipédia"])
+
+    for row in cr:
+        if file_id == "4":
+            philosopher_name, birth, death, category = row
+        else:
+            philosopher_name, birth, death, category, curriculum = row
+        img_link, url, extract = get_philosopher_info(philosopher_name)
+        writer.writerow([philosopher_name, birth, death, category, img_link, url, extract])

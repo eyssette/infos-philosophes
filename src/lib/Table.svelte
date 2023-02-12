@@ -43,7 +43,7 @@
 		textToSearch = textToSearchDefault;
 	}
 	if (innerWidth <= 800) {
-			headers = newHeaderIfSmallScreen;
+		headers = newHeaderIfSmallScreen;
 	} else {
 		if (dataNoHeader == false) {
 			headers = dataArray.shift();
@@ -191,11 +191,18 @@
 					});
 					rows = rowsFilteredAndSorted;
 				} else {
-					rowsFilteredAndSorted = rowsFiltered.sort((a, b) => {
-						// Afficher en premier les résultats dont la première colonne (nom du philosophe) contient le terme recherché
-						return b[0].toLowerCase().includes(search_items[0]) - a[0].toLowerCase().includes(search_items[0]);
-					});
-					rows = rowsFilteredAndSorted
+					if (search_items[0] != " ") {
+						rowsFilteredAndSorted = rowsFiltered.sort((a, b) => {
+							// Afficher en premier les résultats dont la première colonne (nom du philosophe) contient le terme recherché
+							return (
+								b[0].toLowerCase().includes(search_items[0]) -
+								a[0].toLowerCase().includes(search_items[0])
+							);
+						});
+						rows = rowsFilteredAndSorted;
+					} else {
+						rows = rowsFiltered;
+					}
 				}
 				/* rows = rowsFilteredAndSorted.map(function (val) {
 					return val.slice(0, -1);
@@ -254,7 +261,7 @@
 			</tr>
 		{:else if previoustextToSearch != textToSearch && textToSearch != ""}
 			<tr>
-				<td colspan={scoreDisplay ? headersLength+1 : headersLength}>
+				<td colspan={scoreDisplay ? headersLength + 1 : headersLength}>
 					<p><span class="loader" /></p>
 					<p class="info-search">Recherche en cours</p>
 				</td>
@@ -292,33 +299,31 @@
 					<tr>
 						{#each row as cell, i}
 							{#if innerWidth <= 800}
-								<td
-								class:small={smallColumnsIfSmallScreen.includes(i + 1)}>
-									{#if cell !=''}
+								<td class:small={smallColumnsIfSmallScreen.includes(i + 1)}>
+									{#if cell != ""}
 										{@html cell}
 									{/if}
 								</td>
 							{:else}
-								<td
-									class:small={smallColumns.includes(i + 1)}>
-										{#if cell !=''}
-											{#if i == 4}
-												<!-- Image -->
-												<img loading="lazy" src="{cell}"/>
-											{:else if i  == 5}
-												<!-- Lien vers la page wikipédia -->
-												<a href="{cell}">Lien</a>
-											{:else if i  == 6}
-												<!-- Extrait de la page wikipédia -->
-												{#if textToSearch !==''}
-													<details open>{@html cell}</details>
-												{:else}
-													<details >{@html cell}</details>
-												{/if}
+								<td class:small={smallColumns.includes(i + 1)}>
+									{#if cell != ""}
+										{#if i == 4}
+											<!-- Image -->
+											<img loading="lazy" src={cell} />
+										{:else if i == 5}
+											<!-- Lien vers la page wikipédia -->
+											<a href={cell}>Lien</a>
+										{:else if i == 6}
+											<!-- Extrait de la page wikipédia -->
+											{#if textToSearch !== ""}
+												<details open>{@html cell}</details>
 											{:else}
-												{@html cell}
+												<details>{@html cell}</details>
 											{/if}
+										{:else}
+											{@html cell}
 										{/if}
+									{/if}
 								</td>
 							{/if}
 						{/each}
@@ -457,6 +462,6 @@
 	}
 
 	details {
-		min-width:20vw!important;
+		min-width: 20vw !important;
 	}
 </style>

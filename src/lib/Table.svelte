@@ -256,8 +256,14 @@
 		{#if desactivateRegexDefault == true && textToSearch == ""}
 			<tr>
 				<td colspan={headersLength} class="info-search"
-					>Utilisez l'outil de recherche ci-dessus : les résultats qui
-					correspondent à la recherche s'afficheront ci-dessous</td>
+					>Utilisez le moteur de recherche ci-dessus pour trouver ce qui vous intéresse.<br />Ou cliquez sur :
+					<button
+						on:click={() =>
+							desactivateRegexDefault
+								? (textToSearch = " + ")
+								: (textToSearch = "")}>Voir toutes les données</button
+					>
+				</td>
 			</tr>
 		{:else if previoustextToSearch != textToSearch && textToSearch != ""}
 			<tr>

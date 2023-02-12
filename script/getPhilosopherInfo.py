@@ -12,10 +12,10 @@ def get_philosopher_info(philosopher_name):
         json_list = list(json_data['query'].values())[0]
         json_list2 = list(json_list.values())[0]
         if 'thumbnail' in json_list2:
-            img_link = re.sub("/50px.*", '', json_list2['thumbnail']['source'].replace('/thumb', ''))
+            img_link = '<img src="'+re.sub("/50px.*", '', json_list2['thumbnail']['source'].replace('/thumb', ''))+'" />'
         else:
             img_link = ''
-        url = json_list2['fullurl']
+        url = '<a href="'+json_list2['fullurl']+'">Page wikipedia</a>'
         extract = re.sub('<!--.*?-->', '', json_list2['extract'].replace("\n", " "))
         return img_link, url, extract
     except:

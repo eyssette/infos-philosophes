@@ -306,6 +306,7 @@
 					<tr>
 						{#each row as cell, i}
 							{#if innerWidth <= 800}
+								<!-- Pour le cas des petits écrans, on affiche moins de données -->
 								<td class:small={smallColumnsIfSmallScreen.includes(i + 1)}>
 									{#if cell != ""}
 										{@html cell}
@@ -470,5 +471,15 @@
 
 	details {
 		min-width: 20vw !important;
+	}
+
+	:global(.detailsSmallScreen[open]) {
+		font-size:0.9em;
+		position: absolute;
+    	top: 0;
+    	left: 0;
+    	background-color: white;
+    	padding: 20px;
+    	height: 100%;
 	}
 </style>

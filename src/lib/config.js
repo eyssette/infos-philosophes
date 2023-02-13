@@ -29,7 +29,7 @@ export const reorganizeData = false;
 export const reorganizeDataIfSmallScreen = true;
 export function reorganizeDataFunction(arrInit) {
 	/* Un exemple qui ne garde que certaines colonnes */
-	return arrInit.map((element) => [element[0]+ '<br/>'+ element[1] + '/' + element[2], element[3], '<a href="'+element[5]+'"><img loading="lazy" class="img-philosophe" src="'+element[4]+'"/></a>']);
+	return arrInit.map((element) => [element[0]+ '<br/>'+ element[1] + '/' + element[2], element[3], '<a href="'+element[5]+'"><img loading="lazy" class="img-philosophe" src="'+element[4]+'"/></a><details class="detailsSmallScreen">'+element[6]+'</details>']);
 	/* Un exemple de regroupement */
 	/* return arrInit.map(element => [element[0],  element[2] + '<br/>' + element[1] + (element[3] ? element[3] : '')]);  */
 }
@@ -38,7 +38,7 @@ export function reorganizeDataFunction(arrInit) {
 export const dataNoHeader = false;
 export const changeHeader = false;
 export const newHeader = ["Philosophe","Naissance","Mort","Catégorie","Image","Page Wikipedia","Extrait Wikipédia"];
-export const newHeaderIfSmallScreen = ["Philosophe","Catégorie","Image"];
+export const newHeaderIfSmallScreen = ["Philosophe","Catégorie","Image & infos"];
 /* export const newHeader=['Auteur·e','Texte']; */
 /* export const newHeader = ['Intitulé du sujet']; */
 

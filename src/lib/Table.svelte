@@ -317,10 +317,10 @@
 									{#if cell != ""}
 										{#if i == 4}
 											<!-- Image -->
-											<img loading="lazy" src={cell} />
+											<img alt="Représentation du philosophe" loading="lazy" src={cell} />
 										{:else if i == 5}
 											<!-- Lien vers la page wikipédia -->
-											<a href={cell}>Lien</a>
+											<a href={cell}>Wikipédia</a>
 										{:else if i == 6}
 											<!-- Extrait de la page wikipédia -->
 											{#if textToSearch !== "" && textToSearch !== " + "}

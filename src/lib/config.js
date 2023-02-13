@@ -37,13 +37,13 @@ export function reorganizeDataFunction(arrInit) {
 /* Pour changer le titre des colonnes  */
 export const dataNoHeader = false;
 export const changeHeader = false;
-export const newHeader = ["Philosophe","Naissance","Mort","Catégorie","Image","Page Wikipedia","Extrait Wikipédia"];
+export const newHeader = ["Philosophe","Naissance","Mort","Catégorie","Image","Lien","Informations"];
 export const newHeaderIfSmallScreen = ["Philosophe","Catégorie","Image & infos"];
 /* export const newHeader=['Auteur·e','Texte']; */
 /* export const newHeader = ['Intitulé du sujet']; */
 
 /* Pour que certaines colonnes s'affichent en plus petit */
-export const smallColumns = [2, 3, 4];
+export const smallColumns = [2, 3, 4, 6];
 export const smallColumnsIfSmallScreen = [1,2];
 
 /* Surligner les mots recherchés */

@@ -478,11 +478,12 @@
 
 	:global(.detailsSmallScreen[open]) {
 		font-size:0.9em;
-		position: absolute;
+		position: fixed;
     	top: 0;
     	left: 0;
     	background-color: white;
-    	padding: 20px;
+    	padding: 5px 20px;
     	height: 100%;
+		overflow-y: scroll;
 	}
 </style>

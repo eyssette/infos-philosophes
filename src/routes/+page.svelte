@@ -45,6 +45,7 @@
 	<p>Chargement des données. Merci de patienter.</p>
 {:then dataParsed}
 	<div class="search">
+		<p>{dataParsed.length} philosophes dans la base</p>
 		<Search bind:textToSearch />
 	</div>
 	<Table {dataParsed} bind:textToSearch />
